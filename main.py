@@ -1,7 +1,6 @@
 """
-Contact Book v2.2
+Contact Book
 
-Muallif: Diyorbek Jumanov
 Tavsif:
     Bu dastur kontaktlar bilan ishlaydi — qo‘shish, ko‘rish, qidirish va
     email bo‘yicha filtrlash. Har bir kontakt "Ism|Telefon|Email" formatida
@@ -31,8 +30,7 @@ def is_valid_contact(contact: str) -> bool:
     Returns:
         bool: To‘g‘ri format bo‘lsa True, aks holda False.
     """
-    parts = contact.split("|")
-    return len(parts) == 3
+    pass
 
 
 def add_contact(contact_list: List[str]) -> None:
@@ -42,17 +40,7 @@ def add_contact(contact_list: List[str]) -> None:
     Args:
         contact_list (List[str]): Kontaktlar ro‘yxati.
     """
-    name = input("Ism: ").strip()
-    phone = input("Telefon: ").strip()
-    email = input("Email: ").strip()
-
-    if not name or not phone or not email:
-        print("❗️ Har bir maydon to‘ldirilishi shart.")
-        return
-
-    contact = f"{name}|{phone}|{email}"
-    contact_list.append(contact)
-    print("✅ Kontakt muvaffaqiyatli qo‘shildi.")
+    pass
 
 
 def list_contacts(contact_list: List[str]) -> None:
@@ -62,17 +50,7 @@ def list_contacts(contact_list: List[str]) -> None:
     Args:
         contact_list (List[str]): Kontaktlar ro‘yxati.
     """
-    if not contact_list:
-        print("📭 Kontaktlar ro‘yxati bo‘sh.")
-        return
-
-    print("\n📒 Barcha kontaktlar:")
-    for index, contact in enumerate(contact_list, start=1):
-        if is_valid_contact(contact):
-            name, phone, email = contact.split("|")
-            print(f"{index}. Ism: {name}, Tel: {phone}, Email: {email}")
-        else:
-            print(f"{index}. ❌ Xato formatdagi kontakt: {contact}")
+    pass
 
 
 def search_contact(contact_list: List[str]) -> None:
@@ -82,18 +60,7 @@ def search_contact(contact_list: List[str]) -> None:
     Args:
         contact_list (List[str]): Kontaktlar ro‘yxati.
     """
-    keyword = input("🔎 Qidirilayotgan ism: ").strip().lower()
-    found = False
-
-    for contact in contact_list:
-        if is_valid_contact(contact):
-            name, phone, email = contact.split("|")
-            if keyword in name.lower():
-                print(f"✅ Topildi → Ism: {name}, Tel: {phone}, Email: {email}")
-                found = True
-
-    if not found:
-        print("❌ Kontakt topilmadi.")
+    pass
 
 
 def filter_gmail_contacts(contact_list: List[str]) -> None:
@@ -103,18 +70,7 @@ def filter_gmail_contacts(contact_list: List[str]) -> None:
     Args:
         contact_list (List[str]): Kontaktlar ro‘yxati.
     """
-    print("\n📧 @gmail.com kontaktlar:")
-    found = False
-
-    for contact in contact_list:
-        if is_valid_contact(contact):
-            name, phone, email = contact.split("|")
-            if email.endswith("@gmail.com"):
-                print(f"- {name} → {email}")
-                found = True
-
-    if not found:
-        print("🚫 Hech qanday @gmail.com kontakt topilmadi.")
+    pass
 
 
 def main() -> None:
