@@ -30,7 +30,16 @@ def is_valid_contact(contact: str) -> bool:
     Returns:
         bool: To‘g‘ri format bo‘lsa True, aks holda False.
     """
-    pass
+    items = contact.split("|")
+
+    if len(items) == 3:
+        name = items[0]
+        number = items[1]
+        email = items[2]
+
+        return name.isalpha() and number.isdigit() and "@" in email
+    
+    return False
 
 
 def add_contact(contact_list: List[str]) -> None:
@@ -40,7 +49,13 @@ def add_contact(contact_list: List[str]) -> None:
     Args:
         contact_list (List[str]): Kontaktlar ro‘yxati.
     """
-    pass
+    contact = input("contact (Ism|Telefon|Email): ")
+
+    if is_valid_contact(contact):
+        contact_list.append(contact)
+        print("Contact qo'shildi")
+    else:
+        print("Siz xato kontakt kiritdingiz")
 
 
 def list_contacts(contact_list: List[str]) -> None:
@@ -50,7 +65,13 @@ def list_contacts(contact_list: List[str]) -> None:
     Args:
         contact_list (List[str]): Kontaktlar ro‘yxati.
     """
-    pass
+    if not contact_list:
+        print(" Kontaktlar topilmadi.")
+        return
+
+    print("\n Barcha kontaktlar:")
+    for contact in contact_list:
+        print(f" - {contact}")
 
 
 def search_contact(contact_list: List[str]) -> None:
@@ -60,7 +81,17 @@ def search_contact(contact_list: List[str]) -> None:
     Args:
         contact_list (List[str]): Kontaktlar ro‘yxati.
     """
-    pass
+    name = input("Ismni kiriting:").strip()
+    if not name:
+        print(" Iltimos, ism kiriting.")
+        return
+    found_contacts = [contact for contact in contact_list if contact.startswith(name + "|")]
+    if found_contacts:
+        print("\n Topilgan kontaktlar:")
+        for contact in found_contacts:
+            print(f" - {contact}")
+    else:
+        print(" Topilmadi.")
 
 
 def filter_gmail_contacts(contact_list: List[str]) -> None:
@@ -70,7 +101,13 @@ def filter_gmail_contacts(contact_list: List[str]) -> None:
     Args:
         contact_list (List[str]): Kontaktlar ro‘yxati.
     """
-    pass
+    gmail_contacts = [contact for contact in contact_list if contact.endswith("@gmail.com")]
+    if gmail_contacts:
+        print("@gmail.com kontaktlar:")
+        for contact in gmail_contacts:
+            print(f" - {contact}")
+    else:
+        print("kontaktlar topilmadi.")
 
 
 def main() -> None:
